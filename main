@@ -1,0 +1,31 @@
+import winsound, time
+import win32com.client as wincl
+import random
+
+
+def makeDrink(frequencyStart, frequencyEnd, names):
+    speak = wincl.Dispatch("SAPI.SpVoice")
+    wincl.pywintypes
+    t = 0
+    timer = int(random.uniform(frequencyStart, frequencyEnd))
+    print(timer)
+    volume = 100
+    speak.Volume = volume
+    while True:
+        if t == timer:
+            namechose = str(random.choice(names))
+            string = namechose + " take a shot " + namechose
+            # string = namechose * 5 + " take a shot," + namechose + " now, seriously," + namechose + " stop fucking stalling" + namechose
+            speak.Speak(string)
+            print(string)
+            timer = int(random.uniform(frequencyStart, frequencyEnd))
+            print(timer)
+            t = 0
+        t += 1
+        print(t)
+        time.sleep(1)
+
+
+makeDrink(90, 200, ["Ike", "Lindsee", "Nithin", "Phillip",
+                    "Patrick", "Mike",
+                    "Vihvvake", "Adam", "Erin", "Tim", "Jilldoe"])
